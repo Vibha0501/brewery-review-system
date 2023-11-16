@@ -38,15 +38,22 @@ export default {
   
 };
 </script>
+
 <template>
-  <div id="app">
-    <div v-if="!isUserRegistered">
-      <Signup />
-      <button @click="checkUserRegistration">Already registered?</button>
-    </div>
-    <div v-else>
-      <Login />
-      <button @click="checkUserRegistration">Not registered?</button>
+  <div id="app" class="container mt-5">
+    <div class="row justify-content-center">
+      <div v-if="!isUserRegistered" class="col-md-6 d-flex justify-content-center">
+        <div class="card p-4 ">
+        <Signup />
+        <button @click="checkUserRegistration" class="btn btn-link mt-3">Already registered?</button>
+        </div>
+      </div>
+      <div v-else class="col-md-6 d-flex justify-content-center">
+        <div class="card p-4 text-center">
+        <Login />
+        <button @click="checkUserRegistration" class="btn btn-link mt-3">Not registered?</button>
+      </div>
+      </div>
     </div>
     <RouterView/>
   </div>

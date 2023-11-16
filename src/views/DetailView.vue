@@ -1,43 +1,49 @@
 <template>
   <div class="container mt-4">
-    <h1 v-if="brewery">Brewery Information</h1>
-    <div v-if="brewery">
-      <h2>{{ brewery.name }}</h2>
-      <p>Address: {{ brewery.street }}, {{ brewery.city }}, {{ brewery.state }}</p>
-      <p>Phone: {{ brewery.phone }}</p>
-      <p>Website: <a :href="brewery.website_url" target="_blank">{{ brewery.website_url }}</a></p>
-      <!-- Other details -->
-
-      <hr>
-
-      <h2>Reviews</h2>
-      <div v-if="reviews && reviews.length === 0">
-        <p>No reviews yet.</p>
+    <h1 v-if="brewery" class="mb-4">Brewery Information</h1>
+    <div v-if="brewery" class="row">
+      <!-- Brewery Information -->
+      <div class="col-md-6">
+        <h2>{{ brewery.name }}</h2>
+        <p>Address: {{ brewery.street }}, {{ brewery.city }}, {{ brewery.state }}</p>
+        <p>Phone: {{ brewery.phone }}</p>
+        <p>Website: <a :href="brewery.website_url" target="_blank">{{ brewery.website_url }}</a></p>
+        <!-- Other details -->
       </div>
-      <div v-else>
-        <div v-for="(review, index) in reviews" :key="index">
-          <p>{{index+1}}.
-          Rating: {{ review.rating }}
-          <br>  Description: {{ review.description }}</p>
-          <hr>
+      
+      <!-- Reviews -->
+      <div class="col-md-6">
+        <h2>Reviews</h2>
+        <div v-if="reviews && reviews.length === 0">
+          <p>No reviews yet.</p>
+        </div>
+        <div v-else>
+          <div v-for="(review, index) in reviews" :key="index" class="mb-3">
+            <p>{{index+1}}.
+            Rating: {{ review.rating }}
+            <br>  Description: {{ review.description }}</p>
+            <hr>
+          </div>
         </div>
       </div>
-
+    </div>
+    
+    <!-- Add Review Section -->
+    <div class="mt-4 p-4 border border-dark">
       <h2>Add Review</h2>
       <form @submit.prevent="addReview">
-        <div class="form-group">
+        <div class="row">
+        <div class="form-group col-md-6">
           <label for="rating">Rating</label>
           <input type="number" id="rating" v-model="newReview.rating" class="form-control">
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
           <label for="description">Review</label>
           <textarea id="description" v-model="newReview.description" class="form-control"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Add Review</button>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Add Review</button>
       </form>
-    </div>
-    <div v-else>
-      <h3>No brewery selected.</h3>
     </div>
   </div>
 </template>

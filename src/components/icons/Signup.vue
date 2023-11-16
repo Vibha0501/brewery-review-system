@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <h2>Sign Up</h2>
-    <form @submit.prevent="signUpUser" class="my-4">
+    <h2 class="text-center mb-4">Sign Up</h2>
+    <form @submit.prevent="signUpUser" class="text-center">
       <div class="mb-3">
         <input type="text" v-model="displayName" class="form-control" placeholder="Display Name" required />
       </div>
@@ -11,9 +11,9 @@
       <div class="mb-3">
         <input type="password" v-model="password" class="form-control" placeholder="Password" required />
       </div>
-      <button type="submit" class="btn btn-primary">Sign Up</button>
+      <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
     </form>
-    <p v-if="error" class="text-danger">{{ error }}</p>
+    <p v-if="error" class="text-danger mt-3">{{ error }}</p>
   </div>
 </template>
 
@@ -30,9 +30,9 @@ export default {
     };
   },
   methods: {
-    async signUpUser() {
+    async signUpUser() { 
       const auth = getAuth(); // Get the auth object
-
+ 
       try {
         const userCredential = await createUserWithEmailAndPassword(auth, this.email, this.password);
         await userCredential.user.updateProfile({ displayName: this.displayName });

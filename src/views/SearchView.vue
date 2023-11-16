@@ -1,33 +1,39 @@
 <template>
-  <div >
+  <div class="container mt-5 ">
     <h1>Brewery Search</h1>
     
-    <input v-model="city" class="form-control mb-3" placeholder="Search by City" @change="getBreweriesByCity">
-    <input v-model="name" class="form-control mb-3" placeholder="Search by Name" @change="getBreweriesByName">
-    <input v-model="type" class="form-control mb-3" placeholder="Search by Type" @change="getBreweriesByType ">
+    <div class="row mb-3 ">
+      <div class="col-md-4">
+        <input v-model="city" class="form-control" placeholder="Search by City" @change="getBreweriesByCity">
+      </div>
+      <div class="col-md-4">
+        <input v-model="name" class="form-control" placeholder="Search by Name" @change="getBreweriesByName">
+      </div>
+      <div class="col-md-4">
+        <input v-model="type" class="form-control" placeholder="Search by Type" @change="getBreweriesByType">
+      </div>
+    </div>
     
-    <div class="row">
-      <div v-for="i in 3" :key="i" class="col-md-4 mb-3">
-        <div class="card border-dark mb-3" style="max-width: 18rem;" v-for="(brewery, index) in breweries.slice((i-1)*3, i*3)" :key="index" @click="viewBrewery(brewery)">
-        <div class="card-body" >
+    <div >
+      <div v-for="i in 3" :key="i" class="row justify-content-center">
+        <div class="card border-dark col-md-4 m-3" style="width: 20rem; height: 16rem;" v-for="(brewery, index) in breweries.slice((i-1)*3, i*3)" :key="index" @click="viewBrewery(brewery)">
+          <div class="card-body" >
             <h5 class="card-title">{{ brewery.name }}</h5>
-            <p class="card-text">Address: {{ brewery.street }}, {{ brewery.city }}</p>
-            <p class="card-text">Type: {{ brewery.brewery_type }}</p>
-            <p class="card-text">Phone: {{ brewery.phone }}</p>
-            <p class="card-text">
-            Current Rating: {{ brewery.currentRating }}
-            </p>
-            <p class="card-text">{{ brewery.state}}, {{ brewery.country }}</p>
-            <p class="card-text">Website: <a :href="brewery.website_url" target="_blank">{{ brewery.website_url }}</a></p>
+            <p class="card-text">Address: {{ brewery.street }}, {{ brewery.city }}
+            <br>Type: {{ brewery.brewery_type }}
+              <br>Phone: {{ brewery.phone }}
+
+              <br>Current Rating: {{ brewery.currentRating }}
+            <br>{{ brewery.state}}, {{ brewery.country }}
+            <br>Website: <a :href="brewery.website_url" target="_blank">{{ brewery.website_url }}</a></p>
             
             <!-- Other details you want to display -->
-        </div>
+          </div>
         </div>
       </div>
     </div>
-</div>
-        
-</template>
+  </div>
+</template> 
 
 <script>
 import axios from 'axios';

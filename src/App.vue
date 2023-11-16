@@ -12,7 +12,11 @@ import HomeView from './views/HomeView.vue';
   
 </template>
 
-<style scoped>
+<style>
+@import "../global-styles.css";
+div{
+  align-items: center;
+}
 header {
   line-height: 1.5;
   max-height: 100vh;
