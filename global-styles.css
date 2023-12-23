@@ -1,12 +1,13 @@
 body {
-  background-color: black;
-  color: white;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: black;
 }
 
 .card {
  
-  background-color: rgba(255, 255, 255, 0.05); /* Slightly transparent white */
+  background-color: #52D3D8;
+  
   border: 1px solid transparent; /* To maintain space for the shadow */
   border-radius: 10px; /* Adjust border-radius as needed */
-  box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5);  /* White shadow effect */
+  box-shadow: 0 0 20px 5px rgba(29, 28, 28, 0.5);  
 }
